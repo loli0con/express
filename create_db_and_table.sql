@@ -5,6 +5,7 @@ USE express;
 CREATE TABLE IF NOT EXISTS User_
 (
     user_id          INT AUTO_INCREMENT, #用户id
+    user_name        VARCHAR(255),       #用户名
     user_type        CHAR(1),            #用户类型，C客户/E雇员/V虚拟用户/S系统用户
     telephone_number VARCHAR(255),       #联系方式，暂定为手机号码
     payment          VARCHAR(255),       #支付方式，按年/季/月/日/次支付
@@ -50,7 +51,7 @@ CREATE TABLE IF NOT EXISTS Evaluation
 CREATE TABLE IF NOT EXISTS Vehicle
 (
     vehicle_id     INT AUTO_INCREMENT, #工具ID，系统内部编号
-    type           VARCHAR(255),       #工具类型，电动车/面包车/货柜车/火车/飞机/轮船
+    type           VARCHAR(255),       #工具类型，小电车/面包车/货柜车/火车/飞机/轮船
     brand          VARCHAR(255),       #品牌
     license_number VARCHAR(255),       #牌号，例如车牌号等社会性质的外部编号
     worth          DOUBLE,             #估价
