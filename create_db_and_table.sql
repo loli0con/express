@@ -61,7 +61,7 @@ CREATE TABLE IF NOT EXISTS TransferStation
     station_id INT AUTO_INCREMENT, #结点ID
     nickname   VARCHAR(255),       #结点昵称
     location   VARCHAR(255),       #结点位置
-    type       VARCHAR(255),       #结点类型，例如用户地址/一级仓库/二级仓库/三级仓库/四级仓库/中转站
+    type       VARCHAR(255),       #结点类型，例如用户地址/一级仓库/二级仓库/三级仓库/四级仓库/中转站/断点
     creator    INT,                #结点创建者
     manager    INT,                #结点管理者
     PRIMARY KEY (station_id),
