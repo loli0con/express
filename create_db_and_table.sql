@@ -16,6 +16,7 @@ CREATE TABLE IF NOT EXISTS Order_
 (
     order_id                  INT AUTO_INCREMENT,                 #订单编号
     customer_id               INT,                                #顾客ID
+    status                    VARCHAR(255),                       #订单状态，进行中/中断/完成
     create_time               DATETIME DEFAULT CURRENT_TIMESTAMP, #订单创建时间
     expect_deliver_time_frame VARCHAR(255),                       #期待派送时间段，例如11:00-18:00
     payment                   DOUBLE,                             #订单价格
