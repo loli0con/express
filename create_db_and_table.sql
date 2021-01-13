@@ -23,7 +23,7 @@ CREATE TABLE IF NOT EXISTS Order_
     payment                   DOUBLE,                              #订单价格
     pay_type                  VARCHAR(255),                        #支付类型，预付/到付/记账/免付
     is_paid                   CHAR(1)   DEFAULT 'F',               #是否已付款，T/F
-    express_type              VARCHAR(255),                        #快递类型，顺风标快/顺风特快
+    express_type              VARCHAR(255),                        #快递类型，当天/明天/后天/普通
     service_type              VARCHAR(255),                        #服务类型，即时送|京尊达|冷运|国际
     is_deliver_on_time        CHAR(1)   DEFAULT NULL,              #是否按时送达
     weight                    DOUBLE,                              #包裹重量
