@@ -15,19 +15,19 @@ CREATE TABLE IF NOT EXISTS User_
 
 CREATE TABLE IF NOT EXISTS Order_
 (
-    order_id                  INT AUTO_INCREMENT,                  #订单编号
-    customer_id               INT,                                 #顾客ID
-    status                    VARCHAR(255),                        #订单状态，进行中/中断/完成
-    create_time               TIMESTAMP DEFAULT CURRENT_TIMESTAMP, #订单创建时间
-    expect_deliver_time_frame VARCHAR(255),                        #期待派送时间段，例如11:00-18:00
-    payment                   DOUBLE,                              #订单价格
-    pay_type                  VARCHAR(255),                        #支付类型，预付/到付/记账/免付
-    is_paid                   CHAR(1)   DEFAULT 'F',               #是否已付款，T/F
-    express_type              VARCHAR(255),                        #快递类型，当天/明天/后天/普通
-    service_type              VARCHAR(255),                        #服务类型，即时送|京尊达|冷运|国际
-    is_deliver_on_time        CHAR(1)   DEFAULT NULL,              #是否按时送达
-    weight                    DOUBLE,                              #包裹重量
-    package_type              VARCHAR(255),                        #包装，扁平信封/小盒子/大盒子/大物件
+    order_id                  INT AUTO_INCREMENT,                #订单编号
+    customer_id               INT,                               #顾客ID
+    status                    VARCHAR(255),                      #订单状态，进行中/中断/完成
+    create_time               DATETIME DEFAULT CURRENT_DATETIME, #订单创建时间
+    expect_deliver_time_frame VARCHAR(255),                      #期待派送时间段，例如11:00-18:00
+    payment                   DOUBLE,                            #订单价格
+    pay_type                  VARCHAR(255),                      #支付类型，预付/到付/记账/免付
+    is_paid                   CHAR(1)  DEFAULT 'F',              #是否已付款，T/F
+    express_type              VARCHAR(255),                      #快递类型，当天/明天/后天/普通
+    service_type              VARCHAR(255),                      #服务类型，即时送|京尊达|冷运|国际
+    is_deliver_on_time        CHAR(1)  DEFAULT NULL,             #是否按时送达
+    weight                    DOUBLE,                            #包裹重量
+    package_type              VARCHAR(255),                      #包装，扁平信封/小盒子/大盒子/大物件
     PRIMARY KEY (order_id),
     FOREIGN KEY (customer_id) REFERENCES User_ (user_id)
 ); #订单
@@ -76,10 +76,10 @@ CREATE TABLE IF NOT EXISTS TransportFragment
     fragment_id          INT AUTO_INCREMENT, #片段ID
     road_map             VARCHAR(255),       #路线描述
     fragment_description VARCHAR(255),       #片段描述
-    expected_start_time  TIMESTAMP,          #期望开始时间
-    actual_start_time    TIMESTAMP,          #实际开始时间
-    expected_ending_time TIMESTAMP,          #期望结束时间
-    actual_ending_time   TIMESTAMP,          #实际结束时间
+    expected_start_time  DATETIME,           #期望开始时间
+    actual_start_time    DATETIME,           #实际开始时间
+    expected_ending_time DATETIME,           #期望结束时间
+    actual_ending_time   DATETIME,           #实际结束时间
     status               VARCHAR(255),       #片段状态，未开始/进行中/取消/结束/终止
     order_id             INT,                #订单ID
     start_point          INT,                #开始地点
