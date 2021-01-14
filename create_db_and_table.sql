@@ -63,7 +63,7 @@ CREATE TABLE IF NOT EXISTS TransferStation
     station_id BIGINT AUTO_INCREMENT, -- 结点ID
     nickname   VARCHAR(255),          -- 结点昵称
     location   VARCHAR(255),          -- 结点位置
-    type       VARCHAR(255),          -- 结点类型，例如用户地址/一级仓库/二级仓库/三级仓库/四级仓库/中转站/断点
+    type       VARCHAR(255),          -- 结点类型，例如用户主址/用户地址/一级仓库/二级仓库/三级仓库/四级仓库/中转站/断点
     creator    BIGINT,                -- 结点创建者
     manager    BIGINT,                -- 结点管理者
     PRIMARY KEY (station_id),
