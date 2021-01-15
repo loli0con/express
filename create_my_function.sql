@@ -15,3 +15,20 @@ BEGIN
     RETURN CONCAT(yea, '-', mon);
 END $$ -- 函数创建定界符
 DELIMITER ;
+
+
+DROP FUNCTION IF EXISTS FIRST_DATETIME_THIS_MONTH;
+#创建一个函数
+DELIMITER $$ -- 定界符
+-- 开始创建函数
+CREATE FUNCTION FIRST_DATETIME_THIS_MONTH()
+    RETURNS VARCHAR(50)
+BEGIN
+    -- 定义变量
+    DECLARE dt VARCHAR(50);
+    -- 给定义的变量赋值
+    SELECT CONCAT(DATE_ADD(CURDATE(), INTERVAL -DAY(CURDATE()) + 1 DAY), ' 00:00:00') INTO dt;
+    -- 返回函数处理结果
+    RETURN dt;
+END $$ -- 函数创建定界符
+DELIMITER ;
