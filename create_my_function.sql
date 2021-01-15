@@ -1,3 +1,5 @@
+USE express;
+
 DROP FUNCTION IF EXISTS LAST_YEAR_MONTH;
 #创建一个函数
 DELIMITER $$ -- 定界符

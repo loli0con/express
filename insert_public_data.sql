@@ -1,3 +1,5 @@
+USE express;
+
 -- 初始化系统用户
 INSERT INTO User_ (user_id, user_name, user_type, telephone_number, payment)
 VALUES (10086, 'system', 'S', NULL, NULL);

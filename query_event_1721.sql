@@ -1,3 +1,5 @@
+USE express;
+
 -- 查询1721卡车被摧毁时对应的运输片段
 SELECT T.order_id
 FROM TransportFragment T

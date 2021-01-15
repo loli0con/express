@@ -1,3 +1,5 @@
+USE express;
+
 -- 找到在过去一年中运送包裹最多的客户
 SELECT O.customer_id, COUNT(1) AS '订单数量'
 FROM Order_ O

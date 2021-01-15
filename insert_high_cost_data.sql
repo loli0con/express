@@ -1,3 +1,5 @@
+USE express;
+
 -- 跨国大客户，最高开销
 INSERT INTO User_ (user_id, user_name, user_type, telephone_number, payment)
 VALUES (20000000001, '钱老爹', 'C', '20000000001', 'monthly'),

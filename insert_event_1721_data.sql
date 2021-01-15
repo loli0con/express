@@ -1,3 +1,5 @@
+USE express;
+
 -- 卡车1721被毁事件，暨"两个幸运儿给自己心仪的妹子寄情书事件"
 INSERT INTO User_ (user_id, user_name, user_type, telephone_number, payment)
 VALUES (10000000001, '倒霉蛋1', 'C', '10000000001', 'once'),    -- 一位幸运儿
