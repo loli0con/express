@@ -26,7 +26,8 @@ VALUES (10001, '小电车', '小刀', 'xdc10001', 1500.0),
 
 INSERT INTO Order_ (order_id, customer_id, status, create_time, expect_deliver_time_frame, payment, pay_type, is_paid,
                     express_type, service_type, is_deliver_on_time, weight, package_type)
-VALUES (100, 20000000001, '完成', '2020-2-15 8:00:00', '上午', 666.66, '记账', 'F', '明天', '即时送|京尊达|冷运|国际', 'T', 11.1, '小盒子');
+VALUES (100, 20000000001, '完成', CONCAT(LAST_YEAR_MONTH(1), '-15 8:00:00'), '上午', 666.66, '记账', 'F', '明天',
+        '即时送|京尊达|冷运|国际', 'T', 11.1, '小盒子');
 
 INSERT INTO Goods (package_id, goods_name, worth)
 VALUES (100, '冰雕戒指', 66666.66);
@@ -34,9 +35,12 @@ VALUES (100, '冰雕戒指', 66666.66);
 INSERT INTO TransportFragment (fragment_id, road_map, fragment_description, expected_start_time, actual_start_time,
                                expected_ending_time, actual_ending_time, status, order_id, start_point, ending_point,
                                executor, vehicle_id)
-VALUES (101, NULL, '直达机场', '2020-2-15 9:00:00', '2020-2-15 9:00:00', '2020-2-15 10:00:00', '2020-2-15 10:00:00',
+VALUES (101, NULL, '直达机场', CONCAT(LAST_YEAR_MONTH(1), '-15 9:00:00'), CONCAT(LAST_YEAR_MONTH(1), '-15 9:00:00'),
+        CONCAT(LAST_YEAR_MONTH(1), '-15 10:00:00'), CONCAT(LAST_YEAR_MONTH(1), '-15 10:00:00'),
         '完成', 100, 200, 100, 20010000002, 10002),
-       (102, NULL, 'flying', '2020-2-15 11:00:00', '2020-2-15 11:00:00', '2020-2-16 9:30:00', '2020-2-16 9:30:00',
+       (102, NULL, 'flying', CONCAT(LAST_YEAR_MONTH(1), '-15 11:00:00'), CONCAT(LAST_YEAR_MONTH(1), '-15 11:00:00'),
+        CONCAT(LAST_YEAR_MONTH(1), '-16 9:30:00'), CONCAT(LAST_YEAR_MONTH(1), '-16 9:30:00'),
         '完成', 100, 100, 101, 20010000003, 10003),
-       (103, NULL, '立刻配送', '2020-2-16 10:00:00', '2020-2-16 9:45:00', '2020-2-16 10:30:00', '2020-2-16 10:30:00',
+       (103, NULL, '立刻配送', CONCAT(LAST_YEAR_MONTH(1), '-16 10:00:00'), CONCAT(LAST_YEAR_MONTH(1), '-16 9:45:00'),
+        CONCAT(LAST_YEAR_MONTH(1), '-16 10:30:00'), CONCAT(LAST_YEAR_MONTH(1), '-16 10:30:00'),
         '完成', 100, 101, 201, 20010000004, 10004);
