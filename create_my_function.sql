@@ -1,0 +1,17 @@
+DROP FUNCTION IF EXISTS LAST_YEAR_MONTH;
+#创建一个函数
+DELIMITER $$ -- 定界符
+-- 开始创建函数
+CREATE FUNCTION LAST_YEAR_MONTH(sub_month INT)
+    RETURNS VARCHAR(50)
+BEGIN
+    -- 定义变量
+    DECLARE mon VARCHAR(50);
+    DECLARE yea VARCHAR(50);
+    -- 给定义的变量赋值
+    SELECT MONTH(DATE_SUB(CURRENT_DATE(), INTERVAL sub_month MONTH)) INTO mon;
+    SELECT YEAR(DATE_SUB(CURRENT_DATE(), INTERVAL sub_month MONTH)) INTO yea;
+    -- 返回函数处理结果
+    RETURN CONCAT(yea, '-', mon);
+END $$ -- 函数创建定界符
+DELIMITER ;
