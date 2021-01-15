@@ -108,7 +108,7 @@ FROM (SELECT U.user_id, U.user_name, TS.location
                     FROM Order_
                     WHERE is_paid = 'F'
                       AND status NOT IN ('取消')
-                      -- AND create_time BETWEEN DATE_SUB('2020-3-1 00:00:00', INTERVAL 1 MONTH) AND '2020-3-1 00:00:00'
+                      AND create_time BETWEEN DATE_SUB(FIRST_DATETIME_THIS_MONTH(), INTERVAL 1 MONTH) AND FIRST_DATETIME_THIS_MONTH()
                     GROUP BY customer_id) AS T2 ON T1.user_id = T2.customer_id;
 
 -- 账单2
@@ -120,7 +120,7 @@ SELECT O.customer_id                   AS '用户编号',
 FROM Order_ O
          JOIN User_ U ON O.customer_id = U.user_id
 WHERE status NOT IN ('取消')
-      -- AND O.create_time BETWEEN DATE_SUB('2020-3-1 00:00:00', INTERVAL 1 MONTH) AND '2020-3-1 00:00:00'
+  AND O.create_time BETWEEN DATE_SUB(FIRST_DATETIME_THIS_MONTH(), INTERVAL 1 MONTH) AND FIRST_DATETIME_THIS_MONTH()
 GROUP BY O.customer_id, O.service_type;
 
 -- 账单3
@@ -159,4 +159,6 @@ FROM Order_ AS O
          JOIN User_ U ON O.customer_id = U.user_id
          JOIN TransferStation TS1 ON T.start_point = TS1.station_id
          JOIN TransferStation TS2 ON T.ending_point = TS2.station_id
-WHERE O.status NOT IN ('取消');
+WHERE O.create_time BETWEEN DATE_SUB(FIRST_DATETIME_THIS_MONTH(), INTERVAL 1 MONTH) AND FIRST_DATETIME_THIS_MONTH()
+  AND O.status NOT IN ('取消');
+
