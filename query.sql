@@ -96,35 +96,3 @@ LIMIT 0,1;
 SELECT *
 FROM Order_
 WHERE is_deliver_on_time = 'F';
-
--- 上个月的账单1    一张简单的账单：客户、地址和欠款。
--- 用户+地址
-SELECT U.user_id, U.user_name, TS.location
-FROM User_ U
-         INNER JOIN TransferStation TS ON U.user_id = TS.creator
-WHERE TS.type = '用户主址';
-
--- 用户+欠款 ,假设现在是2020年3月
-SELECT customer_id, SUM(payment) AS debt_total
-FROM Order_
-WHERE is_paid = 'F'
-  AND create_time BETWEEN DATE_SUB('2020-3-1 00:00:00', INTERVAL 1 MONTH) AND '2020-3-1 00:00:00'
-GROUP BY customer_id;
-
--- 用户+地址+欠款
-SELECT T1.user_id, T1.user_name, T1.location, IFNULL(T2.debt_total, 0) AS 欠款
-FROM (SELECT U.user_id, U.user_name, TS.location
-      FROM User_ U
-               INNER JOIN TransferStation TS ON U.user_id = TS.creator
-      WHERE TS.type = '用户主址'
-     ) AS T1
-         LEFT JOIN (SELECT customer_id, SUM(payment) AS debt_total
-                    FROM Order_
-                    WHERE is_paid = 'F'
-                      AND create_time BETWEEN DATE_SUB('2020-3-1 00:00:00', INTERVAL 1 MONTH) AND '2020-3-1 00:00:00'
-                    GROUP BY customer_id) AS T2 ON T1.user_id = T2.customer_id;
-
--- 上个月的账单2    按服务类型列出费用的账单
-SELECT customer_id, IFNULL(service_type, '无附加服务'), SUM(payment)
-FROM Order_
-GROUP BY customer_id, service_type;
