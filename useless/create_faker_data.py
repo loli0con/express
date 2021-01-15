@@ -1,6 +1,6 @@
 from faker import Faker
 import random
-from unless import time_lib
+from useless import time_lib
 
 # 用户表
 USER: list = []  # border/
